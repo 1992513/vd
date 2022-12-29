@@ -1,0 +1,100 @@
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>在线自制二维码</title>
+	<meta name="viewport" content="width=device-width" />			
+	<link href="styles.css" rel="stylesheet" />
+	<script src="jquery-1.js"></script>
+	<script src="jqueryqr.js"></script>
+	<script src="ff-range.js"></script>
+	<script src="scripts.js"></script>
+</head>
+<body>
+
+	<div id="container"><canvas width="400" height="400"></canvas></div>
+
+	<div class="control left">
+		<p align="center"><b>自制二维码</b></p>
+
+		<hr />
+		<label for="text">二维码内容</label>
+		<textarea id="text">text</textarea>
+		<label for="render">渲染模式</label>
+		<select id="render">
+			<option value="canvas" selected="selected">Canvas</option>
+			<option value="image">Image</option>
+			
+		</select>
+
+		<label for="size">二维码尺寸:</label>
+		<input id="size" type="range" value="300" min="100" max="2000" step="50" />
+		<label for="fill">二维码颜色</label>
+		<input id="fill" type="color" value="#ccebff" />
+		<label for="background">二维码背景颜色</label>
+		<input id="background" type="color" value="#660000" />
+		<label for="minversion">二维码版本</label>
+		<input id="minversion" type="range" value="5" min="1" max="10" step="1" />
+		<label for="eclevel">误差校正水平</label>
+		<select id="eclevel">
+			<option value="L">L - Low (7%)</option>
+			<option value="M">M - Medium (15%)</option>
+			<option value="Q">Q - Quartile (25%)</option>
+			<option value="H" selected="selected">H - High (30%)</option>
+		</select>
+		<label for="quiet">白边宽度</label>
+		<input id="quiet" type="range" value="1" min="0" max="6" step="1" />
+		<label for="radius">二维码圆滑度:</label>
+		<input id="radius" type="range" value="50" min="0" max="50" step="10" />
+		<a id="download" download="qrcode.png">下载二维码</a>
+	</div>
+
+	<div class="control right">
+		<p align="center"><b>二维码LOGO设置</b></p>
+		<hr />
+		<label for="mode">二维码LOGO显示方式</label>
+		<select id="mode">
+			<option value="0">0 - Normal</option>
+			<option value="1">1 - Label-Strip</option>
+			<option value="2" selected="selected">2 - Label-Box</option>
+			<option value="3">3 - Image-Strip</option>
+			<option value="4">4 - Image-Box</option>
+		</select>
+
+		<label for="msize">二维码LOGO尺寸:</label>
+		<input id="msize" type="range" value="18" min="0" max="25" step="1" />
+		<label for="mposx">二维码LOGOX坐标:</label>
+		<input id="mposx" type="range" value="50" min="0" max="100" step="1" />
+		<label for="mposy">二维码LOGOY坐标:</label>
+		<input id="mposy" type="range" value="50" min="0" max="100" step="1" />
+		<hr />
+		
+		<label for="label">文字标签</label><input id="label" type="text" value="翻墙" />
+		<label for="font">字体名称</label>
+		<select id="font" type="text">
+			<option value="SimSun">宋体</option>
+			<option value="Microsoft YaHei" selected="selected">微软雅黑</option>
+			<option value="SimHei">黑体</option>
+			<option value="KaiTi">楷体</option>
+			<option value="LiSu">隶书</option>
+			<option value="YouYuan">幼圆</option>
+			<option value="Verdana">Verdana</option>
+			<option value="Times New Roman">Times New Roman</option>
+			<option value="Impact">Impact</option>
+		</select>
+		
+		<label for="fontcolor">字体颜色:</label>
+		<input id="fontcolor" type="color" value="#ccebff" />
+
+		<label for="image">上传LOGO图片</label>
+		<input id="image" type="file" />
+		<p></p>
+		<hr />
+		<p align="center"><a id="banner" href="https://godstate.github.io/qr/qr3/qr3/index.html" target="_blank"><b>二维码读取与识别</b></a></p>
+	</div>
+    <script>
+        text.value = window.location.hash.substring(1);
+    </script>
+	<img id="img-buffer" src="dummy.png" />	
+</body>
+</html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,11,10,9">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/jquery/1.12.4/jquery.min.js"></script>
+</head>
+
+<body ontouchstart="">
+    <!-- 052 -->
+    <style type="text/css">
+        body {margin:0px; background:#ffffff;}
+        div.tail {position:fixed; top:0; left:0; width:100%; height:100%; background:#ffffff; z-index:99995; display:none; overflow-y:scroll;}
+        div.cssload-crazy-arrow {position:fixed; top:0px; left:0px; right:0px; bottom:0px; margin:auto; width:32px; height:32px; border:1px solid #ff80ff; background-color:#faf2e1; border-top-left-radius:50%; border-bottom-right-radius:50%; border-bottom-left-radius:50%; box-shadow:0px 0px 5px 3px rgba(255,128,255,0.8) inset; display:none; z-index:99999; animation: cssload-spin 1000ms infinite linear; -o-animation: cssload-spin 1000ms infinite linear; -ms-animation: cssload-spin 1000ms infinite linear; -webkit-animation: cssload-spin 1000ms infinite linear; -moz-animation: cssload-spin 1000ms infinite linear;}
+        @keyframes cssload-spin {100%{transform: rotate(360deg); transform: rotate(360deg);}}
+        @-o-keyframes cssload-spin {100%{-o-transform: rotate(360deg); transform: rotate(360deg);}}
+        @-ms-keyframes cssload-spin {100%{-ms-transform: rotate(360deg); transform: rotate(360deg);}}
+        @-webkit-keyframes cssload-spin {100%{-webkit-transform: rotate(360deg); transform: rotate(360deg);}}
+        @-moz-keyframes cssload-spin {100%{-moz-transform: rotate(360deg); transform: rotate(360deg);}}
+    </style>
+
+    <div id="ooWait" class="cssload-crazy-arrow"></div>
+    <div id="ooHead"></div>
+    <div id="ooSize"></div>
+
+    <div id="ooBody"></div>
+
+    <div id="ooFoot"></div>
+    <div style="clear:both; height:120px;"></div>
+
+    <div id="ooShow" class="tail"></div>
+
+    <div id="ooFind" class="tail">
+      <div style="position:absolute; background:#faf2e1; top:0; left:0; width:100%; height:40px;">
+        <div class="find">
+          <input id="oiFind" type="text"><a href="javascript:void(0);" onclick="javascript:document.getElementById('ooFind').style.display='none'; Load(encodeURIComponent('~'+document.getElementById('oiFind').value));">搜索</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="ooDown" class="tail">
+      <div id="ooDownD"></div>
+    </div>
+
+    <div id="ooBack" class="tail">
+      <div id="ogBack"><div class="ca3v"><div style="width:296px; margin:0 auto;">
+        <p><textarea id="ogBackF" style="width:100%; height:180px; border-width:0px;"></textarea></p>
+        <div class="buttoncontainer"><div class="button"><a href="javascript:void(0);" onclick="javascript:document.getElementById('ogBackR').innerHTML=''; Load('opBack'
+        +'&post='+encodeURIComponent(document.getElementById('ogBackF').value));">&#x53CD;&#x9988;</a></div></div>
+        <div id="ogBackR" class="erro"></div>
+      </div></div></div>
+      <div id="ogBackD"></div>
+    </div>
+
+    <div id="ooQuit" class="tail">
+      <div id="ogQuit"><div class="ca3v"><div style="width:296px; margin:0 auto;">
+        <p>&#x6211;&#x53EB;&#xFF08;&#x53EF;&#x4EE5;&#x5316;&#x540D;&#xFF09;<input id="ogQuitN" type="text" style="width:180px; border-width:0px;"></p>
+        <p>&#x6211;&#x8981;&#xFF08;&#x53EF;&#x4EE5;&#x591A;&#x9009;&#xFF09;
+          <input id="ogQuit1" type="checkbox">&#x9000;&#x515A;
+          <input id="ogQuit2" type="checkbox">&#x9000;&#x56E2;
+          <input id="ogQuit3" type="checkbox">&#x9000;&#x961F;</p>
+        <p>&#x4EBA;&#x6570;&#xFF08;&#x53EF;&#x4EE5;&#x591A;&#x4EBA;&#xFF09;<input id="ogQuitC" type="text" style="width:180px; border-width:0px;"></p>
+        <p>&#x60F3;&#x8BF4;&#xFF08;&#x53EF;&#x4EE5;&#x9009;&#x586B;&#xFF09;<textarea id="ogQuitS" style="width:180px; height:120px; border-width:0px;"></textarea></p>
+        <div class="buttoncontainer"><div class="button"><a href="javascript:void(0);" onclick="javascript:document.getElementById('ogQuitR').innerHTML=''; Load('opQuit'
+        +'&quitn='+encodeURIComponent(document.getElementById('ogQuitN').value)
+        +'&quit1='+encodeURIComponent(document.getElementById('ogQuit1').checked)
+        +'&quit2='+encodeURIComponent(document.getElementById('ogQuit2').checked)
+        +'&quit3='+encodeURIComponent(document.getElementById('ogQuit3').checked)
+        +'&quitc='+encodeURIComponent(document.getElementById('ogQuitC').value)
+        +'&from='+ooFrom
+        +'&post='+encodeURIComponent(document.getElementById('ogQuitS').value));">&#x6211;&#x8981;&#x529E;&#x7406;&#x4E09;&#x9000;</a></div></div>
+        <div id="ogQuitR" class="erro"></div>
+        <div style="height:20px;"></div>
+        <p>&#x67E5;&#x8BE2;&#x5BC6;&#x7801;&#xFF08;&#x7F16;&#x53F7;&#xFF09;<input id="ogFindP" type="text" style="width:180px; border-width:0px;"></p>
+        <div class="buttoncontainer"><div class="button"><a href="javascript:void(0);" onclick="javascript:document.getElementById('ogFindR').innerHTML=''; Load('opFind'
+        +'&findp='+encodeURIComponent(document.getElementById('ogFindP').value));">&#x662F;&#x5426;&#x529E;&#x7406;&#x6210;&#x529F;</a></div></div>
+        <div id="ogFindR" class="erro"></div>
+      </div></div></div>
+      <div id="ogQuitD"></div>
+    </div>
+
+    <div id="ooUser" class="tail">
+      <div id="ooLogin" style="display:none;"><div class="ca3v"><div style="width:296px; margin:0 auto;">
+        <p>　　登入名称　<input id="ooLoginN" type="text" style="width:180px; border-width:0px;" placeholder="&#x4E0D;&#x662F;&#x6635;&#x79F0;"></p>
+        <p>　　登入密码　<input id="ooLoginP" type="password" style="width:180px; border-width:0px;"></p>
+        <div class="buttoncontainer"><div class="button2"><a href="javascript:void(0);" onclick="javascript:document.getElementById('ooLoginR').innerHTML=''; Load('opLogin'
+        +'&loginn='+encodeURIComponent(document.getElementById('ooLoginN').value)
+        +'&loginp='+encodeURIComponent(document.getElementById('ooLoginP').value)
+        +'&from='+ooFrom);"><font class="link">登入</font></a></div></div>
+        <p style="text-align:center;"><a href="javascript:void(0);" onclick="javascript:document.getElementById('ooLogin').style.display='none';document.getElementById('ooLogup').style.display='block';"><font class="linv">注册新号</font></a></p>
+        <div id="ooLoginR" class="erro"></div>
+      </div></div></div>
+
+      <div id="ooLogup" style="display:none;"><div class="ca3v"><div style="width:296px; margin:0 auto;">
+        <p>　　注册名称　<input id="ooLogupN" type="text" style="width:180px; border-width:0px;"></p>
+        <p>　　注册密码　<input id="ooLogupP" type="password" style="width:180px; border-width:0px;"></p>
+        <p>　　重复密码　<input id="ooLogupQ" type="password" style="width:180px; border-width:0px;"></p>
+        <div class="buttoncontainer"><div class="button2"><a href="javascript:void(0);" onclick="javascript:document.getElementById('ooLogupR').innerHTML=''; Load('opLogup'
+        +'&logupn='+encodeURIComponent(document.getElementById('ooLogupN').value)
+        +'&logupp='+encodeURIComponent(document.getElementById('ooLogupP').value)
+        +'&logupq='+encodeURIComponent(document.getElementById('ooLogupQ').value)
+        +'&from='+ooFrom);"><font class="link">注册</font></a></div></div>
+        <p style="text-align:center;"><a href="javascript:void(0);" onclick="javascript:document.getElementById('ooLogin').style.display='block';document.getElementById('ooLogup').style.display='none';"><font class="linv">登入现有号</font></a></p>
+        <div id="ooLogupR" class="erro"></div>
+      </div></div></div>
+
+      <div id="ooLogot" style="display:none;"><div class="ca3v"><div style="width:296px; margin:0 auto;">
+        <div id="ooLogotN" style="text-align:center; font-size:15px; color:#d000ff;"></div>
+        <div style="height:6px;"></div>
+        <div class="buttoncontainer"><div class="button2"><a href="javascript:void(0);" onclick="javascript:ooUser='';ooPass='';document.getElementById('ooLogin').style.display='block';document.getElementById('ooLogot').style.display='none';"><font class="link">登出</font></a></div></div>
+        <p style="text-align:center;"><a href="javascript:void(0);" onclick="javascript:document.getElementById('ooLogot').style.display='none';document.getElementById('ooLognk').style.display='block';"><font class="linv">修改昵称</font></a>
+        &nbsp;<a href="javascript:void(0);" onclick="javascript:document.getElementById('ooLogot').style.display='none';document.getElementById('ooLogpw').style.display='block';"><font class="linv">修改密码</font></a></p>
+        <p style="text-align:center;"><a href="javascript:void(0);" onclick="javascript:document.getElementById('ooUser').style.display='none'; Load('opLikeAll'+'&ooUser='+encodeURIComponent(ooUser)+'&ooPass='+encodeURIComponent(ooPass));"><font class="linv">我的收藏</font></a>
+        &nbsp;<a href="javascript:void(0);" onclick="javascript:document.getElementById('ooUser').style.display='none'; Load('opBlogAll'+'&ooUser='+encodeURIComponent(ooUser)+'&ooPass='+encodeURIComponent(ooPass));"><font class="linv">我的博客</font></a>
+        &nbsp;<a href="javascript:void(0);" onclick="Load('opLogAll'+'&ooUser='+encodeURIComponent(ooUser)+'&ooPass='+encodeURIComponent(ooPass));"><font class="linv">我的信息</font></a></p>
+      </div></div></div>
+
+      <div id="ooLogpw" style="display:none;"><div class="ca3v"><div style="width:296px; margin:0 auto;">
+        <p>　　现有密码　<input id="ooLogpwO" type="password" style="width:180px; border-width:0px;"></p>
+        <p>　　更新密码　<input id="ooLogpwP" type="password" style="width:180px; border-width:0px;"></p>
+        <p>　　重复密码　<input id="ooLogpwQ" type="password" style="width:180px; border-width:0px;"></p>
+        <div class="buttoncontainer"><div class="button"><a href="javascript:void(0);" onclick="javascript:document.getElementById('ooLogpwR').innerHTML=''; Load('opLogpw'
+        +'&logpwn='+encodeURIComponent(ooUser)
+        +'&logpwo='+encodeURIComponent(document.getElementById('ooLogpwO').value)
+        +'&logpwp='+encodeURIComponent(document.getElementById('ooLogpwP').value)
+        +'&logpwq='+encodeURIComponent(document.getElementById('ooLogpwQ').value)
+        +'&from='+ooFrom);"><font class="link">修改密码</font></a></div></div>
+        <div id="ooLogpwR" class="erro"></div>
+      </div></div></div>
+
+      <div id="ooLognk" style="display:none;"><div class="ca3v"><div style="width:296px; margin:0 auto;">
+        <p>　　现有密码　<input id="ooLognkP" type="password" style="width:180px; border-width:0px;"></p>
+        <p>　　更新昵称　<input id="ooLognkK" type="text" style="width:180px; border-width:0px;"></p>
+        <div class="buttoncontainer"><div class="button"><a href="javascript:void(0);" onclick="javascript:document.getElementById('ooLognkR').innerHTML=''; Load('opLognk'
+        +'&lognkn='+encodeURIComponent(ooUser)
+        +'&lognkp='+encodeURIComponent(document.getElementById('ooLognkP').value)
+        +'&lognkk='+encodeURIComponent(document.getElementById('ooLognkK').value)
+        +'&from='+ooFrom);"><font class="link">修改昵称</font></a></div></div>
+        <div id="ooLognkR" class="erro"></div>
+      </div></div></div>
+
+      <div id="ooUserD"></div>
+    </div>
+
+    <div id="ooChat" class="tail" style="z-index:99998;"></div>
+
+    <script>
+    var ooFind="";
+    var ooFrom="";
+    var ooUser="";
+    var ooPass="";
+
+    $(window).scroll(function() {if ($(document).scrollTop()>150) {$('div.navl').css('background','#faf2e1');} else {$('div.navl').css('background','rgba(0,0,0,0)');}});
+
+    var slideIndex = 1;
+    function plusSlides(n) {showSlides(slideIndex += n);}
+    function showSlides(n) {
+      var i;
+      var slides = document.getElementsByClassName("slide");
+      var dots = document.getElementsByClassName("sldot");
+      slideIndex = n;
+      if (n > slides.length) {slideIndex = 1}    
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < dots.length; i++) {dots[i].className = dots[i].className.replace(" active", "");}
+      dots[slideIndex-1].className += " active";
+      for (i = 0; i < slides.length; i++) {slides[i].style.display = "none";}
+      slides[slideIndex-1].style.display = "block";
+    }
+
+    var audioPlayer = new Audio();
+    audioPlayer.onended = function(){document.getElementsByClassName('player-container')[0].className='player-container';};
+
+    function Init() {
+      var q=location.search;
+      var f="";
+      if (q!="") q=q.substr(1);
+      if (q.indexOf("from=")>=0) {f=q.substring(q.indexOf("from=")); q=q.substring(0,q.indexOf("from="));}
+      if (q.indexOf("key=")>=0) {k=q.substring(q.indexOf("key=")); q=q.substring(0,q.indexOf("key=")).replace("&","");}
+      if (location.hash!="") q=location.hash.substring(1);
+      if (q=="") q="ogLine"; else q=q.replace("name=","");
+      if (f=="") f="ogHomet"; else f=f.replace("from=","");
+      ooFrom=f;
+      ooFind=q;
+      Load("ogHead");
+    }
+
+    function Load(search) {
+      if (search.indexOf("ooHome")==0) {
+        document.getElementById("ooShow").innerHTML="";
+        document.getElementById("ooShow").style.display = "none";
+        document.getElementById("ooFind").style.display = "none";
+        document.getElementById("ooDown").style.display = "none";
+        document.getElementById("ooBack").style.display = "none";
+        document.getElementById("ooQuit").style.display = "none";
+        document.getElementById("ooUser").style.display = "none";
+        document.getElementById("ooChat").style.display = "none";
+        if (document.getElementById("ooBody").innerHTML!="") return;
+        else search="ogHome";
+      }
+      else if (search.indexOf("ooShow")==0) {
+        document.getElementById("ooShow").style.display = "block";
+        document.getElementById("ooFind").style.display = "none";
+        document.getElementById("ooDown").style.display = "none";
+        document.getElementById("ooBack").style.display = "none";
+        document.getElementById("ooQuit").style.display = "none";
+        document.getElementById("ooUser").style.display = "none";
+        document.getElementById("ooChat").style.display = "none";
+        return;
+      }
+      else if (search.indexOf("ooFind")==0) {
+        document.getElementById("ooShow").style.display = "none";
+        document.getElementById("ooFind").style.display = "block";
+        document.getElementById("ooDown").style.display = "none";
+        document.getElementById("ooBack").style.display = "none";
+        document.getElementById("ooQuit").style.display = "none";
+        document.getElementById("ooUser").style.display = "none";
+        document.getElementById("ooChat").style.display = "none";
+        return;
+      }
+      else if (search.indexOf("ooDown")==0) {
+        document.getElementById("ooShow").style.display = "none";
+        document.getElementById("ooFind").style.display = "none";
+        document.getElementById("ooDown").style.display = "block";
+        document.getElementById("ooBack").style.display = "none";
+        document.getElementById("ooQuit").style.display = "none";
+        document.getElementById("ooUser").style.display = "none";
+        document.getElementById("ooChat").style.display = "none";
+        if ('t'!='a' && 't'!='w') return;
+      }
+      else if (search.indexOf("ogBack")==0) {
+        document.getElementById("ooShow").style.display = "none";
+        document.getElementById("ooFind").style.display = "none";
+        document.getElementById("ooDown").style.display = "none";
+        document.getElementById("ooBack").style.display = "block";
+        document.getElementById("ooQuit").style.display = "none";
+        document.getElementById("ooUser").style.display = "none";
+        document.getElementById("ooChat").style.display = "none";
+        document.getElementById("ogBackR").innerHTML = "";
+        search="ogBack"+"&from="+ooFrom;
+      }
+      else if (search.indexOf("ogQuit")==0) {
+        document.getElementById("ooShow").style.display = "none";
+        document.getElementById("ooFind").style.display = "none";
+        document.getElementById("ooDown").style.display = "none";
+        document.getElementById("ooBack").style.display = "none";
+        document.getElementById("ooQuit").style.display = "block";
+        document.getElementById("ooUser").style.display = "none";
+        document.getElementById("ooChat").style.display = "none";
+        document.getElementById("ogQuitR").innerHTML = "";
+        document.getElementById("ogFindR").innerHTML = "";
+        search="ogQuit"+"&from="+ooFrom;
+      }
+      else if (search.indexOf("ogUser")==0) {
+        document.getElementById("ooShow").style.display = "none";
+        document.getElementById("ooFind").style.display = "none";
+        document.getElementById("ooDown").style.display = "none";
+        document.getElementById("ooBack").style.display = "none";
+        document.getElementById("ooQuit").style.display = "none";
+        document.getElementById("ooUser").style.display = "block";
+        document.getElementById("ooChat").style.display = "none";
+        if (ooUser == "") {
+          document.getElementById("ooLoginR").innerHTML = "";
+          document.getElementById("ooLogupR").innerHTML = "";
+          document.getElementById("ooLogin").style.display = "block";
+          document.getElementById("ooLogup").style.display = "none";
+          document.getElementById("ooLogot").style.display = "none";
+          document.getElementById("ooLogpw").style.display = "none";
+          document.getElementById("ooLognk").style.display = "none";
+        }
+        else {
+          document.getElementById("ooLogpwR").innerHTML = "";
+          document.getElementById("ooLognkR").innerHTML = "";
+          document.getElementById("ooLogin").style.display = "none";
+          document.getElementById("ooLogup").style.display = "none";
+          document.getElementById("ooLogot").style.display = "block";
+          document.getElementById("ooLogpw").style.display = "none";
+          document.getElementById("ooLognk").style.display = "none";
+        }
+        return;
+      }
+      else if (search.indexOf("ooChat")==0) {
+        document.getElementById("ooChat").style.display = "block";
+      }
+
+      document.getElementById("ooWait").style.display = "block";
+      Test(search);
+    }
+
+    function Show(search, data) {
+      document.getElementById("ooWait").style.display = "none";
+
+      var name=search;
+      if (name.indexOf("&")>0) name=name.substring(0,search.indexOf("&"));
+      if (name.indexOf("~")>0) name=name.substring(0,search.indexOf("~"));
+      var id=name;
+      if (id.indexOf("_")>0) id=id.substring(0,search.indexOf("_"));
+      id = decodeURIComponent(id);
+
+           if (search.indexOf("opFind")==0) document.getElementById("ogFindR").innerHTML = data;
+      else if (search.indexOf("ooDown")==0) document.getElementById("ooDownD").innerHTML = data;
+      else if (search.indexOf("opQuit")==0) document.getElementById("ogQuitR").innerHTML = data;
+      else if (search.indexOf("ogQuit")==0) document.getElementById("ogQuitD").innerHTML = data;
+      else if (search.indexOf("opBack")==0) document.getElementById("ogBackR").innerHTML = data;
+      else if (search.indexOf("ogBack")==0) document.getElementById("ogBackD").innerHTML = data;
+      else if (search.indexOf("ooChat")==0) document.getElementById("ooChat").innerHTML = data;
+      else if (search.indexOf("opLogin&")==0) {document.getElementById("ooLoginR").innerHTML = data;
+        if (data.indexOf("登入成功")==0) {
+          ooUser=document.getElementById('ooLoginN').value;
+          ooPass=document.getElementById('ooLoginP').value;
+          document.getElementById("ooLogotN").innerHTML=data.substring(4);
+          document.getElementById('ooLogin').style.display='none';
+          document.getElementById('ooLogot').style.display='block';
+          document.getElementById("ooLoginN").value='';
+          document.getElementById("ooLoginP").value='';
+          document.getElementById("ooLoginR").innerHTML='';
+        }}
+      else if (search.indexOf("opLogup&")==0) {document.getElementById("ooLogupR").innerHTML = data;
+        if (data.indexOf("注册成功")==0) {
+          ooUser=document.getElementById('ooLogupN').value;
+          ooPass=document.getElementById('ooLogupP').value;
+          document.getElementById("ooLogotN").innerHTML=data.substring(4);
+          document.getElementById('ooLogup').style.display='none';
+          document.getElementById('ooLogot').style.display='block';
+          document.getElementById("ooLogupN").value='';
+          document.getElementById("ooLogupP").value='';
+          document.getElementById("ooLogupQ").value='';
+          document.getElementById("ooLogupR").innerHTML='';
+        }}
+      else if (search.indexOf("opLogpw&")==0) {document.getElementById("ooLogpwR").innerHTML = data;
+        if (data.indexOf("修改密码成功")==0) {
+          document.getElementById('ooLogpw').style.display='none';
+          document.getElementById('ooLogot').style.display='block';
+          document.getElementById("ooLogpwO").value='';
+          document.getElementById("ooLogpwP").value='';
+          document.getElementById("ooLogpwQ").value='';
+          document.getElementById("ooLogpwR").innerHTML='';
+        }}
+      else if (search.indexOf("opLognk&")==0) {document.getElementById("ooLognkR").innerHTML = data;
+        if (data.indexOf("修改昵称成功")==0) {
+          document.getElementById("ooLogotN").innerHTML=data.substring(6);
+          document.getElementById('ooLognk').style.display='none';
+          document.getElementById('ooLogot').style.display='block';
+          document.getElementById("ooLognkP").value='';
+          document.getElementById("ooLognkK").value='';
+          document.getElementById("ooLognkR").innerHTML='';
+        }}
+      else if (search.indexOf("opLogAll&")==0) document.getElementById("ooUserD").innerHTML = data;
+      else if (search.indexOf("opViewAdd&")==0) {document.getElementById('vr'+data.substring(4)).innerHTML = data.substring(0,4);
+          if (data.indexOf("请先登入")==0) Load("ogUser.aspx");
+          else if (data.indexOf("评论成功")==0) Load('opViewAll'+data.substring(4));
+      }
+      else if (search.indexOf("opBlogAdd&")==0) {document.getElementById('brblog').innerHTML = data.substring(0,4);
+          if (data.indexOf("请先登入")==0) Load("ogUser.aspx");
+          else if (data.indexOf("发博成功")==0) Load('og博客~time');
+      }
+      else if (search.indexOf("opHoldSet")==0 || search.indexOf("opKickSet")==0 || search.indexOf("opLikeSet")==0 || search.indexOf("opViewAll")==0
+          || search.indexOf("opViewGet")==0 || search.indexOf("opViewHoldSet")==0 || search.indexOf("opViewKickSet")==0) {
+          document.getElementById(id).innerHTML=data;
+      }
+      else if (id.indexOf("Head")==2) {
+          document.getElementById("ooHead").innerHTML=data;
+          showSlides(slideIndex);
+          Load("ogFoot");
+      }
+      else if (id.indexOf("Foot")==2) {
+          document.getElementById("ooFoot").innerHTML=data;
+          Load(ooFind);
+      }
+      else if (id.indexOf("c")==0 || id.indexOf("http")==0 || id.indexOf("/")==0 || id.indexOf("~c")==0 || id.indexOf("~http")==0 || id.indexOf("~/")==0) {
+          document.getElementById("ooShow").innerHTML="<div class='main'>"+data+"</div><div style='height:40px;clear:both;'></div>";
+          document.getElementById("ooShow").style.display="block";
+          document.getElementById("ooShow").scrollTop=0;
+          document.getElementById("ooBack").style.display="none";
+          if (data.indexOf('poster=')>=0) {
+            var pmedia=data.match(/(src=")(\S*?)(")/);
+            var pcover=data.match(/(poster=")(\S*?)(")/);
+            document.getElementsByClassName('player-cover')[0].style.background='url('+pcover[2]+')';
+            document.getElementsByClassName('player-cover')[0].style.backgroundSize='cover';
+            document.getElementsByClassName('player-container')[0].className='player-container';
+            audioPlayer.pause();
+            audioPlayer.currentTime = 0;
+            audioPlayer.src=pmedia[2];
+          }
+          else if (data.indexOf('.m3u8')>=0) {
+            var pid=data.match(/(id=")(\S*?)(")/);
+            var player = videojs('#'+pid[2]);
+          }
+      }
+      else if (id.indexOf("on")==0 && document.getElementById(id)) {
+          document.getElementById(id).innerHTML=data;
+      }
+      else if (id.indexOf("o")==0 || id.indexOf("~")==0) {
+          document.getElementById("ooBody").innerHTML=data;
+          document.getElementById("ooShow").style.display="none";
+          window.scrollTo(0,0);
+      }
+    }
+
+    function Test(search) {
+        jQuery.ajax({
+          url: "https://gitcdn.link/cdn/otiny/up/master/_/"+search+".htm?"+Math.floor(Math.random()*90000000+10000000),
+          dataType: "text",
+          timeout: 16000,
+        })
+        .done(function(data) {
+          Show(search, data);
+        })
+        .fail(function() {
+          document.getElementById("ooWait").style.display="none";
+          alert("精简版 获取失败，请用：\r\n安卓版 https://x.co/ogatea\r\n电脑版 https://x.co/ogatew");
+        });
+    }
+
+    function Cast(search) {
+      alert(search);
+    }
+
+    function Save(search) {
+      window.open(search);
+    }
+
+    Init();
+    </script>
+
+    <link  href="https://cdn.jsdelivr.net/npm/video.js@7.5.4/dist/video-js.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/video.js@7.5.4/dist/video.min.js"></script>
+</body>
+</html>

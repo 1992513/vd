@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>二维码读取</title>
+</head>
+<body>
+<style>
+    hr {
+        margin-top: 32px;
+    }
+    input[type="file"] {
+        display: block;
+        margin-bottom: 16px;
+    }
+    div {
+        margin-bottom: 16px;
+    }
+    #flash-toggle {
+        display: none;
+    }
+</style>
+    <a hidden="hidden">
+<h1>从网络摄像头扫描</h1>
+   -----该功能还包括在线图片截取...还在完善中
+<div>
+  <br>
+  <br>
+    <b>设备有摄像头: </b>
+    <span id="cam-has-camera"></span>
+    <br>
+    <b>设备有flash: </b>
+    <span id="cam-has-flash"></span>
+    <br>
+    <video id="qr-video"></video>
+    <br>
+    <label>
+        <input id="show-scan-region" type="checkbox">
+        显示扫描区域
+    </label>
+</div>
+<div>
+    <button id="flash-toggle">📸 Flash: <span id="flash-state">off</span></button>
+</div>
+<div>
+    <select id="inversion-mode-select">
+        <option value="original">扫描原稿 (明亮背景深色QR)</option>
+        <option value="invert">反色扫描(明亮QR深色背景)</option>
+        <option value="both">同时扫描</option>
+    </select>
+    <br>
+</div>
+<b>检测到的QR码: </b>
+<span id="cam-qr-result">None</span>
+<br>
+<b>最近检测时间: </b>
+<span id="cam-qr-result-timestamp"></span>
+<br>
+<br>
+<button id="start-button">开始</button>
+<button id="stop-button">停止</button>
+<hr>
+    </a>
+<h1>上传二维码图片扫描：</h1>
+<input type="file" id="file-selector">
+<b>检测到的QR码: </b>
+<span id="file-qr-result">None</span>
+
+<script type="module">
+    import QrScanner from "../qr-scanner.min.js";
+    QrScanner.WORKER_PATH = '../qr-scanner-worker.min.js';
+
+    const video = document.getElementById('qr-video');
+    const camHasCamera = document.getElementById('cam-has-camera');
+    const camHasFlash = document.getElementById('cam-has-flash');
+    const flashToggle = document.getElementById('flash-toggle');
+    const flashState = document.getElementById('flash-state');
+    const camQrResult = document.getElementById('cam-qr-result');
+    const camQrResultTimestamp = document.getElementById('cam-qr-result-timestamp');
+    const fileSelector = document.getElementById('file-selector');
+    const fileQrResult = document.getElementById('file-qr-result');
+
+    function setResult(label, result) {
+        label.textContent = result;
+        camQrResultTimestamp.textContent = new Date().toString();
+        label.style.color = 'teal';
+        clearTimeout(label.highlightTimeout);
+        label.highlightTimeout = setTimeout(() => label.style.color = 'inherit', 100);
+    }
+
+    // ####### Web Cam Scanning #######
+
+    QrScanner.hasCamera().then(hasCamera => camHasCamera.textContent = hasCamera);
+
+    const scanner = new QrScanner(video, result => setResult(camQrResult, result), error => {
+        camQrResult.textContent = error;
+        camQrResult.style.color = 'inherit';
+    });
+    scanner.start().then(() => {
+        scanner.hasFlash().then(hasFlash => {
+            camHasFlash.textContent = hasFlash;
+            if (hasFlash) {
+                flashToggle.style.display = 'inline-block';
+                flashToggle.addEventListener('click', () => {
+                    scanner.toggleFlash().then(() => flashState.textContent = scanner.isFlashOn() ? 'on' : 'off');
+                });
+            }
+        });
+    });
+
+    // for debugging
+    window.scanner = scanner;
+
+    document.getElementById('show-scan-region').addEventListener('change', (e) => {
+        const input = e.target;
+        const label = input.parentNode;
+        label.parentNode.insertBefore(scanner.$canvas, label.nextSibling);
+        scanner.$canvas.style.display = input.checked ? 'block' : 'none';
+    });
+
+    document.getElementById('inversion-mode-select').addEventListener('change', event => {
+        scanner.setInversionMode(event.target.value);
+    });
+
+    document.getElementById('start-button').addEventListener('click', () => {
+        scanner.start();
+    });
+
+    document.getElementById('stop-button').addEventListener('click', () => {
+        scanner.stop();
+    });
+
+    // ####### File Scanning #######
+
+    fileSelector.addEventListener('change', event => {
+        const file = fileSelector.files[0];
+        if (!file) {
+            return;
+        }
+        QrScanner.scanImage(file)
+            .then(result => setResult(fileQrResult, result))
+            .catch(e => setResult(fileQrResult, e || 'No QR code found.'));
+    });
+
+</script>
+</body>
+</html>
