@@ -79,7 +79,7 @@ function init() {
     setTimeout(() => e.target.textContent = origin, 3000);
   });
   content.appendChild(add);
-  let localQr = JSON.parse(localStorage.getItem('_local_qr_codes_') || '["https://github.com/qxrghq384/www/blob/master/README.md?k#1"]');
+  let localQr = JSON.parse(localStorage.getItem('_local_qr_codes_') || '["https://github.com/19920513/www/blob/master/README.md?k#1"]');
   let queryQr = parseQrFromQuery();
   localQr.forEach(chl => content.insertBefore(createQR(chl), add));
   if (queryQr) {
