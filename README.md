@@ -141,7 +141,7 @@
 <p><a href="https://gitlab.com/tao.huan.bu175/vdzsl_720/-/raw/master/public/ZSL_720.webm" target="_blank"><img width="400" height="50" src="https://img.shields.io/badge/一位“密切接触者”的神奇经历-4a154b?logo=youtube%20tv" title="一位“密切接触者”的神奇经历　　　　　　　　　" alt="一位“密切接触者”的神奇经历　　　　　　　　　"></a></p>
 <p><a href="https://gitlab.com/tang.kui.ji894/vdbaxi96-720p-final/-/raw/master/public/baxi96-720p-final.webm" target="_blank"><img width="400" height="50" src="https://img.shields.io/badge/九旬老人“密接”不染疫的奥秘-4a154b?logo=youtube%20tv" title="九旬老人“密接”不染疫的奥秘　　　　　　　　　" alt="九旬老人“密接”不染疫的奥秘　　　　　　　　　"></a></p>
 <p><a href="https://gitlab.com/ting4727054/vdmhsf-bdddx_v4_720-final/-/raw/master/public/mhsf-bdddx_v4_720-final.webm" target="_blank"><img width="400" height="50" src="https://img.shields.io/badge/【明慧十方】病毒的党性-4a154b?logo=youtube%20tv" title="【明慧十方】病毒的党性　　　　　　　　　" alt="【明慧十方】病毒的党性　　　　　　　　　"></a></p>
-
+<p><a href="https://gitlab.com/tou600974/vdmhsf-bdyy/-/raw/master/public/mhsf-bdyy.webm" target="_blank"><img width="400" height="50" src="https://img.shields.io/badge/【明慧十方】疫情海啸 病毒有眼 如何自救-4a154b?logo=youtube%20tv" title="【明慧十方】疫情海啸 病毒有眼 如何自救　　　　　　　　　" alt="【明慧十方】疫情海啸 病毒有眼 如何自救　　　　　　　　　"></a></p>
 
 
 
